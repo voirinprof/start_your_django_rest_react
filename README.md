@@ -69,6 +69,34 @@ geo-stack/
   - `?bbox=...` — zones qui intersectent la bbox
   - `?contains_lat=...&contains_lng=...` — zone(s) contenant ce point
 
+## Références et tutoriels (pour aller plus loin)
+
+Liens vers la documentation officielle de chaque brique de la stack — utiles pour creuser au-delà de ce squelette.
+
+### GeoDjango / Django
+- [GeoDjango Tutorial (doc officielle Django)](https://docs.djangoproject.com/en/stable/ref/contrib/gis/tutorial/) — tutoriel de référence : modèles géographiques, import de shapefile, requêtes spatiales
+- [GeoDjango — vue d'ensemble](https://docs.djangoproject.com/en/stable/ref/contrib/gis/) — point d'entrée vers toute la doc GeoDjango (installation, API base de données, GEOS, GDAL)
+- [GeoDjango Database API](https://docs.djangoproject.com/en/stable/ref/contrib/gis/db-api/) — détail des lookups spatiaux (`__distance_lte`, `__contains`, `__intersects`, etc.) utilisés dans `views.py`
+- [Real Python — Location-Based Web App with Django and GeoDjango](https://realpython.com/location-based-app-with-geodjango-tutorial/) — tutoriel complet construisant une appli "commerces à proximité", bon complément pédagogique à la doc officielle
+
+### Django REST Framework + GIS
+- [Django REST Framework — doc officielle](https://www.django-rest-framework.org/) — pour tout ce qui touche aux serializers, ViewSets, permissions, pagination en dehors du volet spatial
+- [django-rest-framework-gis (dépôt officiel, maintenu par OpenWISP)](https://github.com/openwisp/django-rest-framework-gis) — `GeoFeatureModelSerializer`, `InBBoxFilter`, rendu GeoJSON ; explique aussi les filtres prêts à l'emploi (alternative à notre filtrage manuel dans `views.py`)
+
+### PostGIS
+- [PostGIS — Introduction to PostGIS (workshop officiel)](https://postgis.net/workshops/postgis-intro/) — LE tutoriel de référence pour apprendre le SQL spatial pas à pas (chargement de données, requêtes, jointures spatiales)
+- [PostGIS — Getting Started](https://postgis.net/documentation/getting_started/) — installation et activation de l'extension
+- [PostGIS — Manuel officiel](https://postgis.net/documentation/manual/) — référence complète des fonctions `ST_*`
+
+### React + MapLibre
+- [react-map-gl — Get Started (doc officielle)](https://visgl.github.io/react-map-gl/docs/get-started) — composant `<Map>`, sources, layers, le pattern utilisé dans `MapView.jsx`
+- [MapLibre GL JS — doc officielle](https://maplibre.org/maplibre-gl-js/docs/) — la lib sous-jacente ; utile pour comprendre les spécifications de style et les types de couches (`circle`, `fill`, `line`, etc.)
+- [MapTiler — How to display a MapLibre GL JS map using React](https://docs.maptiler.com/react/maplibre-gl-js/how-to-use-maplibre-gl-js/) — tutoriel pas à pas avec marqueurs et contrôles, bon point de départ si `react-map-gl` paraît trop abstrait au début
+
+### Docker
+- [Docker Compose — doc officielle](https://docs.docker.com/compose/) — pour comprendre `docker-compose.yml` (services, volumes, healthchecks, depends_on)
+- [Image officielle `postgis/postgis` sur Docker Hub](https://hub.docker.com/r/postgis/postgis) — variantes de versions PostgreSQL/PostGIS disponibles
+
 ## Notes importantes
 
 - **Précision des surfaces** : le calcul d'aire dans `Zone.save()` utilise la
